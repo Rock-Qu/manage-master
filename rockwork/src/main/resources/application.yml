@@ -1,0 +1,80 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    cache: false
+    prefix: classpath:/templates
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/manage?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    
+
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      max-lifetime: 15
+      idle-timeout: 30000
+      auto-commit: true
+      pool-name: DatebookHikariCP
+      connection-timeout: 3000
+      connection-test-query: select 1
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    
+
+mqtt:
+  onlinetpye: java
+
+
+server:
+  port: 8088
+
+mybatis:
+    type-aliases-package: package com.biqi.model
+    mapper-locations: classpath:mapper/*.xml
+
+    configuration:
+      map-underscore-to-camel-case: true
+    
+mapper:
+    mappers:
+        - com.common.mybatis.MyMapper
+    not-empty: false
+    identity: MYSQL
+    
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+
+
+logging:
+
+  level:
+    com.biqi.dao: debug
+    com.biqi.service: info
+
+
+
+
+
+
+
+
+
+
+
